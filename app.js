@@ -9,7 +9,9 @@ require("dotenv").config({ path: `${__dirname}/.env.${ENV}` });
 // mongoose.connect("mongodb://127.0.0.1:27017/todoDB");
 const MONGODB_URL = process.env.MONGODB_URL;
 
-mongoose.connect(`${MONGODB_URL}`);
+mongoose.connect(
+  `mongodb+srv://hassenbest23:WwcnDwAVgkWZtqq4@cluster1.2d5hemt.mongodb.net/?retryWrites=true&w=majority`
+);
 
 // create Schema
 const todoSchema = new mongoose.Schema({
