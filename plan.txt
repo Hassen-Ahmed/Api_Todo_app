@@ -1,0 +1,28 @@
+Todo Project Details
+
+// get all todo
+// post todo
+// delet todo
+// update isDone
+
+hassenbest23
+WwcnDwAVgkWZtqq4
+
+1, tech-stack
+   - React.js
+   - Express
+   - Mongodb
+
+2, simple todo app. The idea is to working with mongodb
+
+3, api.js
+  - Axios
+  
+Create seed for 
+- test
+- development
+- production
+
+
+I am watching AGT and I ask my self why people need permission for to call best act or song? Why they don't accept they are the best one before? You know what if they perform best song/dancing ever and
+the judge/jury say "that's awful song/dance ever" imidiatly there moral/feeling get drop down.
