@@ -4,6 +4,8 @@ const app = express();
 
 const ENV = process.env.NODE_ENV || "development";
 
+app.use(cors());
+
 require("dotenv").config({ path: `${__dirname}/.env.${ENV}` });
 
 // mongoose.connect("mongodb://127.0.0.1:27017/todoDB");
