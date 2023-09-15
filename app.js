@@ -4,17 +4,13 @@ const mongoose = require("mongoose");
 const app = express();
 
 const ENV = process.env.NODE_ENV || "development";
-
-app.use(cors());
-
 require("dotenv").config({ path: `${__dirname}/.env.${ENV}` });
 
-// mongoose.connect("mongodb://127.0.0.1:27017/todoDB");
-const MONGODB_URL = process.env.MONGODB_URL;
+app.use(cors());
+app.use(express.json());
 
-mongoose.connect(
-  `mongodb+srv://hassenbest23:WwcnDwAVgkWZtqq4@cluster1.2d5hemt.mongodb.net/?retryWrites=true&w=majority`
-);
+// mongoose.connect("mongodb://127.0.0.1:27017/todoDB");
+mongoose.connect(`${process.env.MONGODB_URL}`);
 
 // create Schema
 const todoSchema = new mongoose.Schema({
@@ -31,8 +27,6 @@ const todoSchema = new mongoose.Schema({
 
 // create model
 const Todo = new mongoose.model("Todo", todoSchema);
-
-app.use(express.json());
 
 async function getTodo() {
   const data = await Todo.find({});
@@ -53,26 +47,26 @@ async function patchTodoById(id, isDone) {
   return await Todo.updateOne({ _id: id }, { $set: { isDone } });
 }
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   getTodo().then((data) => {
     res.status(200).send({ todos: data });
   });
 });
 
-app.post("/", (req, res) => {
+app.post("/api", (req, res) => {
   const { todo, date = Date.now(), isDone } = req.body;
   postTodo(todo, date, isDone).then((response) => {
     res.status(201).send({ todos: response });
   });
 });
 
-app.delete("/:id", (req, res) => {
+app.delete("/api/:id", (req, res) => {
   const { id } = req.params;
   res.sendStatus(204);
   deleteTodo(id);
 });
 
-app.patch("/:id", (req, res) => {
+app.patch("/api/:id", (req, res) => {
   const { id } = req.params;
   const { isDone } = req.body;
 
