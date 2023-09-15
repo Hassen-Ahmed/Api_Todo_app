@@ -10,11 +10,7 @@ app.use(cors());
 require("dotenv").config({ path: `${__dirname}/.env.${ENV}` });
 
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
-
-async function connectionMongoDB() {
-  await mongoose.connect(MONGODB_URL);
-}
-connectionMongoDB();
+mongoose.connect(MONGODB_URL);
 
 // create Schema
 const todoSchema = new mongoose.Schema({
@@ -81,9 +77,5 @@ app.patch("/:id", (req, res) => {
   });
 });
 
-// app.listen(3000);
-
 const { PORT = 9090 } = process.env;
-
-console.log(PORT);
 app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
