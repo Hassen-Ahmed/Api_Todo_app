@@ -9,8 +9,11 @@ app.use(cors());
 
 require("dotenv").config({ path: `${__dirname}/.env.${ENV}` });
 
-const MONGODB_URL = `${process.env.MONGODB_URL}`;
-mongoose.connect(MONGODB_URL, { useNewUrlParser: true });
+const user_name = `${process.env.MONGODB_USER}`;
+const user_password = `${process.env.MONGODB_PW}`;
+mongoose.connect(
+  `mongodb+srv://${user_name}:${user_password}@cluster1.2d5hemt.mongodb.net/?retryWrites=true&w=majority`
+);
 
 // create Schema
 const todoSchema = new mongoose.Schema({
