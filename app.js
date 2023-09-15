@@ -10,7 +10,7 @@ app.use(cors());
 require("dotenv").config({ path: `${__dirname}/.env.${ENV}` });
 
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
-mongoose.connect(MONGODB_URL);
+mongoose.connect(MONGODB_URL, { useNewUrlParser: true });
 
 // create Schema
 const todoSchema = new mongoose.Schema({
