@@ -9,10 +9,8 @@ app.use(cors());
 
 require("dotenv").config({ path: `${__dirname}/.env.${ENV}` });
 
-const user_name = `${process.env.MONGODB_USER}`;
-const user_password = `${process.env.MONGODB_PW}`;
 mongoose.connect(
-  `mongodb+srv://${user_name}:${user_password}@cluster1.2d5hemt.mongodb.net/?retryWrites=true&w=majority`
+  "mongodb+srv://hassenbest23:WwcnDwAVgkWZtqq4@cluster1.2d5hemt.mongodb.net/?retryWrites=true&w=majority"
 );
 
 // create Schema
@@ -80,6 +78,5 @@ app.patch("/:id", (req, res) => {
   });
 });
 
-// const { PORT = 9090 } = process.env;
-// app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
-app.listen(3000);
+const { PORT = 9090 } = process.env;
+app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
