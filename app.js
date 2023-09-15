@@ -17,7 +17,7 @@ const todoSchema = new mongoose.Schema({
   todo: String,
   date: {
     type: String,
-    // default: Date.now(),
+    default: Date.now(),
   },
   isDone: {
     type: Boolean,
@@ -77,4 +77,9 @@ app.patch("/:id", (req, res) => {
   });
 });
 
-app.listen(3000);
+// app.listen(3000);
+
+const { PORT = 9090 } = process.env;
+
+console.log(PORT);
+app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
