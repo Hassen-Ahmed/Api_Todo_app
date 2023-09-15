@@ -1,10 +1,8 @@
 const cors = require("cors");
-import { URL } from "url";
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
-const __dirname = new URL(".", import.meta.url).pathname;
 const ENV = process.env.NODE_ENV || "development";
 
 app.use(cors());
