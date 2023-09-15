@@ -9,6 +9,7 @@ app.use(cors());
 
 require("dotenv").config({ path: `${__dirname}/.env.${ENV}` });
 
+const MONGODB_URL = `${process.env.MONGODB_URL}`;
 mongoose.connect(
   "mongodb+srv://hassenbest23:WwcnDwAVgkWZtqq4@cluster1.2d5hemt.mongodb.net/?retryWrites=true&w=majority"
 );
@@ -51,6 +52,7 @@ async function patchTodoById(id, isDone) {
 }
 
 app.get("/", (req, res) => {
+  console.log(MONGODB_URL, "MONGODB_URL");
   getTodo().then((data) => {
     res.status(200).send({ todos: data });
   });
