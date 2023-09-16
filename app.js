@@ -1,19 +1,22 @@
 const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
-const app = express();
-
+require("dotenv").config({ path: `${__dirname}/.env.development` });
 const ENV = process.env.NODE_ENV || "development";
+const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-require("dotenv").config({ path: `${__dirname}/.env.development` });
-
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
-mongoose.connect(
-  "mongodb+srv://hassenbest23:WwcnDwAVgkWZtqq4@cluster1.2d5hemt.mongodb.net/?retryWrites=true&w=majority"
-);
+console.log(process.env);
+
+async function createConnection() {
+  return mongoose.connect(
+    "mongodb+srv://hassenbest23:WwcnDwAVgkWZtqq4@cluster1.2d5hemt.mongodb.net/?retryWrites=true&w=majority"
+  );
+}
+createConnection();
 
 // create Schema
 const todoSchema = new mongoose.Schema({
