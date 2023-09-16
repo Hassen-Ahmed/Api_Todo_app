@@ -6,7 +6,7 @@ const ENV = process.env.NODE_ENV || "development";
 const app = express();
 
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
-console.log(process.env);
+console.log(process.env, "mongodb testing");
 
 app.use(cors());
 app.use(express.json());
