@@ -6,17 +6,13 @@ const ENV = process.env.NODE_ENV || "development";
 const app = express();
 
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
-console.log("mongodb testing------>>>>>", MONGODB_URL);
 
 app.use(cors());
 app.use(express.json());
 
-async function createConnection() {
-  return mongoose.connect(
-    "mongodb+srv://hassenbest23:WwcnDwAVgkWZtqq4@cluster1.2d5hemt.mongodb.net/?retryWrites=true&w=majority"
-  );
-}
-createConnection();
+mongoose.connect(
+  "mongodb+srv://hassenbest23:WwcnDwAVgkWZtqq4@cluster1.2d5hemt.mongodb.net/?retryWrites=true&w=majority"
+);
 
 // create Schema
 const todoSchema = new mongoose.Schema({
@@ -54,7 +50,6 @@ async function patchTodoById(id, isDone) {
 }
 
 app.get("/", (req, res) => {
-  console.log(MONGODB_URL, "MONGODB_URL");
   getTodo().then((data) => {
     res.status(200).send({ todos: data });
   });
