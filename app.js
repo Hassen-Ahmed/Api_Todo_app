@@ -6,8 +6,9 @@ const app = express();
 const ENV = process.env.NODE_ENV || "development";
 
 app.use(cors());
+app.use(express.json());
 
-require("dotenv").config({ path: `${__dirname}/.env.${ENV}` });
+require("dotenv").config({ path: `${__dirname}/.env.development` });
 
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
 mongoose.connect(
@@ -29,8 +30,6 @@ const todoSchema = new mongoose.Schema({
 
 // create model
 const Todo = new mongoose.model("Todo", todoSchema);
-
-app.use(express.json());
 
 async function getTodo() {
   const data = await Todo.find({});
