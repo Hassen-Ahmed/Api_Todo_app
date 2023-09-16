@@ -1,15 +1,15 @@
+require("dotenv").config({ path: `${__dirname}/.env.development` });
 const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
-require("dotenv").config({ path: `${__dirname}/.env.development` });
 const ENV = process.env.NODE_ENV || "development";
 const app = express();
 
-app.use(cors());
-app.use(express.json());
-
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
 console.log(process.env);
+
+app.use(cors());
+app.use(express.json());
 
 async function createConnection() {
   return mongoose.connect(
