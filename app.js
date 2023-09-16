@@ -1,13 +1,15 @@
-require("dotenv").config({ path: `${__dirname}/../.env.development` });
 const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
-const ENV = process.env.NODE_ENV || "development";
+app.use(cors());
+require("dotenv").config({ path: `${__dirname}/.env.development` });
+
+// const ENV = process.env.NODE_ENV || "development";
 const app = express();
 
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
+console.log(MONGODB_URL, "<<<<< ------mongodb ");
 
-app.use(cors());
 app.use(express.json());
 
 mongoose.connect(
@@ -26,7 +28,6 @@ const todoSchema = new mongoose.Schema({
     default: false,
   },
 });
-
 // create model
 const Todo = new mongoose.model("Todo", todoSchema);
 
