@@ -2,11 +2,11 @@
   "name": "todo_app",
   "version": "1.0.0",
   "description": "",
-  "main": "listen.js",
+  "main": "app.js",
   "scripts": {
-    "dev": "nodemon listen.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node listen.js"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",

@@ -82,4 +82,7 @@ app.patch("/:id", (req, res) => {
   });
 });
 
+const { PORT = 9090 } = process.env;
+app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
+
 module.exports = app;
