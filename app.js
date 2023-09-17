@@ -8,7 +8,7 @@ app.use(cors());
 require("dotenv").config({ path: `${__dirname}/.env.development` });
 
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
-console.log(MONGODB_URL, "<<<<< ------mongodb ");
+console.log(MONGODB_URL, "<<<<< ------mongodb");
 
 app.use(express.json());
 
