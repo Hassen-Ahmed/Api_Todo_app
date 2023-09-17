@@ -4,19 +4,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 dotenv.config({ path: `${__dirname}/config.env` });
-
-// const ENV = process.env.NODE_ENV || "development";
-const app = express();
-app.use(cors());
-
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
-console.log(MONGODB_URL, "<<<<< ------mongodb ");
 
-app.use(express.json());
-
-mongoose.connect(
-  "mongodb+srv://hassenbest23:WwcnDwAVgkWZtqq4@cluster1.2d5hemt.mongodb.net/?retryWrites=true&w=majority"
-);
+mongoose.connect(MONGODB_URL);
 
 // create Schema
 const todoSchema = new mongoose.Schema({
@@ -51,6 +41,10 @@ async function deleteTodo(id) {
 async function patchTodoById(id, isDone) {
   return await Todo.updateOne({ _id: id }, { $set: { isDone } });
 }
+
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 app.get("/", (req, res) => {
   getTodo().then((data) => {
