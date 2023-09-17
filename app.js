@@ -3,7 +3,7 @@ const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 
-dotenv.config({ path: `${__dirname}/config.env` });
+dotenv.config({ path: `${__dirname}/envconfig/config.env` });
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
 
 mongoose.connect(MONGODB_URL);
