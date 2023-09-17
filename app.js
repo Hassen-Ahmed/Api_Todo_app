@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 // const ENV = process.env.NODE_ENV || "development";
 const app = express();
 app.use(cors());
-require("dotenv").config({ path: `${__dirname}/.env.development` });
+require("dotenv").config({ path: "./.env.development" });
 
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
 console.log(MONGODB_URL, "<<<<< ------mongodb ");
