@@ -1,10 +1,16 @@
-const dotenv = require("dotenv");
 const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 
-dotenv.config({ path: `${__dirname}/envconfig/config.env` });
+// const ENV = process.env.NODE_ENV || "development";
+const app = express();
+app.use(cors());
+require("dotenv").config({ path: `${__dirname}/.env.development` });
+
 const MONGODB_URL = `${process.env.MONGODB_URL}`;
+console.log(MONGODB_URL, "<<<<< ------mongodb ");
+
+app.use(express.json());
 
 mongoose.connect(MONGODB_URL);
 
@@ -41,10 +47,6 @@ async function deleteTodo(id) {
 async function patchTodoById(id, isDone) {
   return await Todo.updateOne({ _id: id }, { $set: { isDone } });
 }
-
-const app = express();
-app.use(cors());
-app.use(express.json());
 
 app.get("/", (req, res) => {
   getTodo().then((data) => {
