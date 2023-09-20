@@ -1,12 +1,12 @@
 const cors = require("cors");
 const express = require("express");
-const db = require("./mongodb/connection");
 const Todo = require("./model/test.model");
 
 async function getTodo() {
   const data = await Todo.find({});
   return data;
 }
+
 async function postTodo(todo, date, isDone) {
   const todos = await Todo.create({ todo, date, isDone });
   todos.save();
@@ -51,10 +51,10 @@ app.patch("/:id", (req, res) => {
   });
 });
 
-const { PORT = 9090 } = process.env;
+// const { PORT = 9090 } = process.env;
 
-db.once("open", () => {
-  app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
-});
+// db.once("open", () => {
+//   app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
+// });
 
 module.exports = app;
