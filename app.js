@@ -44,17 +44,11 @@ app.delete("/:id", (req, res) => {
 
 app.patch("/:id", (req, res) => {
   const { id } = req.params;
-  const { isDone } = req.body;
+  const { todo, isDone } = req.body;
 
-  patchTodoById(id, isDone).then((data) => {
+  patchTodoById(id, todo, isDone).then((data) => {
     res.status(200).send({ todos: data });
   });
 });
-
-// const { PORT = 9090 } = process.env;
-
-// db.once("open", () => {
-//   app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
-// });
 
 module.exports = app;
