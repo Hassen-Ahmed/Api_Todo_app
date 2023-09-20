@@ -15,8 +15,8 @@ async function postTodo(todo, date, isDone) {
 async function deleteTodo(id) {
   return await Todo.deleteOne({ _id: id });
 }
-async function patchTodoById(id, isDone) {
-  return await Todo.updateOne({ _id: id }, { $set: { isDone } });
+async function patchTodoById(id, todo, isDone) {
+  return await Todo.updateOne({ _id: id }, { $set: { todo, isDone } });
 }
 
 const app = express();
