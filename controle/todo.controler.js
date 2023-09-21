@@ -28,15 +28,16 @@ const patchTodoById = async (req, res) => {
   const { todo, isDone } = req.body;
 
   try {
-    await Todo.updateOne({ _id: id }, { $set: { todo, isDone } });
+    const data = await Todo.updateOne({ _id: id }, { $set: { todo, isDone } });
     res.status(200).send({ todos: data });
-  } catch (error) {}
+  } catch (err) {
+    console.log("patchTodoById-------->>", err.message);
+  }
 };
 
 module.exports = {
   getAllTodo,
   postTodo,
-  deleteTodo,
   deleteTodo,
   patchTodoById,
 };
