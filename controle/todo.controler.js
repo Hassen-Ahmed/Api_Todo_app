@@ -10,7 +10,7 @@ const postTodo = async (req, res) => {
 
   const todos = await Todo.create({ todo, date, isDone });
   todos.save();
-  res.status(201).send({ todos: response });
+  res.status(201).send({ todos: todos });
 };
 
 const deleteTodo = async (req, res) => {
