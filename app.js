@@ -18,5 +18,5 @@ app.delete("/todo/:id", deleteTodo);
 app.patch("/todo/:id", patchTodoById);
 
 // user
-app.get("/user", getAllUserById);
+// app.get("/user", getAllUserById);
 module.exports = app;
