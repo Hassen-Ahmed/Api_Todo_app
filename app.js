@@ -12,11 +12,11 @@ app.use(cors());
 app.use(express.json());
 
 // todo
-app.get("/todo", getAllTodo(req, res));
-app.post("/todo", postTodo(req, res));
-app.delete("/todo/:id", deleteTodo(req, res));
-app.patch("/todo/:id", patchTodoById(req, res));
+app.get("/todo", getAllTodo);
+app.post("/todo", postTodo);
+app.delete("/todo/:id", deleteTodo);
+app.patch("/todo/:id", patchTodoById);
 
 // user
-app.get("/user", getAllUserById(req, res));
+app.get("/user", getAllUserById);
 module.exports = app;
