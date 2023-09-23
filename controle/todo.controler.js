@@ -6,9 +6,9 @@ const getAllTodo = async (req, res) => {
 };
 
 const postTodo = async (req, res) => {
-  const { todo, date = Date.now(), isDone } = req.body;
+  const { todo, date = Date.now(), isDone, userId } = req.body;
 
-  const todos = await Todo.create({ todo, date, isDone });
+  const todos = await Todo.create({ todo, date, isDone, userId });
   todos.save();
   res.status(201).send({ todos: todos });
 };
