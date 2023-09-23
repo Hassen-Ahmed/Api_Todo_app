@@ -6,6 +6,11 @@ const {
   deleteTodo,
   patchTodoById,
 } = require("./controle/todo.controler");
+const {
+  getUserById,
+  getUserByUsername,
+  postUser,
+} = require("./controle/user.controler");
 
 const app = express();
 app.use(cors());
@@ -18,5 +23,7 @@ app.delete("/todo/:id", deleteTodo);
 app.patch("/todo/:id", patchTodoById);
 
 // user
-// app.get("/user", getAllUserById);
+app.get("/user/:id", getUserById);
+app.get("/user", getUserByUsername);
+app.post("/user", postUser);
 module.exports = app;
