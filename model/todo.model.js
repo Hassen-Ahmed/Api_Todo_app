@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const todoSchema = new mongoose.Schema({
-  todo: String,
+  todo: { type: String, required: true },
   date: {
     type: String,
     default: Date.now(),
@@ -9,6 +9,10 @@ const todoSchema = new mongoose.Schema({
   isDone: {
     type: Boolean,
     default: false,
+  },
+  userId: {
+    type: String,
+    required: true,
   },
 });
 
