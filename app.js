@@ -11,11 +11,12 @@ const {
   getUserByUsername,
   postUser,
 } = require("./controle/user.controler");
+var cookieParser = require("cookie-parser");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.cookieParser());
+app.use(cookieParser());
 
 // todo
 app.get("/todo", getAllTodo);
