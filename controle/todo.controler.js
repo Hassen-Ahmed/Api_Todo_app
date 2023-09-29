@@ -6,14 +6,19 @@ const getAllTodo = async (req, res) => {
     .cookie("hassenCookies", "{teststring : 'hi there'}", {
       maxAge: 900000,
       httpOnly: true,
-      domain: "https://sticky-todos.netlify.app/todo",
+      domain: "https://sticky-todos.netlify.app",
     })
-    .setHeader("Access-Control-Allow-Credentials", true)
-    .setHeader("Access-Control-Allow-Header", "X-Requested-with,content-type")
+    .setHeader("Access-Control-Allow-Header", "X-Requested-with")
+    .setHeader("Access-Control-Allow-Header", "content-type")
+    .setHeader(
+      "Access-Control-Allow-Methods",
+      "POST, GET, PUT, DELETE, OPTIONS"
+    )
     .setHeader(
       "Access-Control-Allow-Origin",
       "https://sticky-todos.netlify.app"
     )
+    .setHeader("Access-Control-Allow-Credentials", true)
     .status(200)
     .send({ todos: data });
 };
