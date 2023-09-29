@@ -7,7 +7,7 @@ const getAllTodo = async (req, res) => {
       expires: new Date(Date.now()) + 900000,
       httpOnly: true,
       domain: "https://sticky-todos.netlify.app",
-      path: "/",
+      path: "/todo",
       maxAge: 900000,
       signed: true,
       secure: true,
@@ -18,8 +18,12 @@ const getAllTodo = async (req, res) => {
       "Access-Control-Allow-Methods",
       "POST, GET, PUT, DELETE, OPTIONS"
     )
-    .setHeader("Access-Control-Allow-Origin", "*")
+    .setHeader(
+      "Access-Control-Allow-Origin",
+      "https://sticky-todos.netlify.app/todo"
+    )
     .setHeader("Access-Control-Allow-Credentials", true)
+    .setHeader("Referrer-Policy", "origin-when-cross-origin")
     .status(200)
     .send({ todos: data });
 };
