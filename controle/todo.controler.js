@@ -5,8 +5,10 @@ const getAllTodo = async (req, res) => {
   res
     .cookie("hassenCookies", "{teststring:'hi there'}", {
       maxAge: 900000,
-      HttpOnly: true,
+      httpOnly: true,
+      domain: "https://sticky-todos.netlify.app/",
     })
+    .setHeader("Access-Control-Allow-Credentials", true)
     .status(200)
     .send({ todos: data });
 };
