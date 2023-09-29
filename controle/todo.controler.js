@@ -5,7 +5,7 @@ const getAllTodo = async (req, res) => {
   res
     .cookie("hassenCookies", "{teststring:'hi there'}", {
       maxAge: 900000,
-      httpOnly: true,
+      HttpOnly: true,
     })
     .status(200)
     .send({ todos: data });
