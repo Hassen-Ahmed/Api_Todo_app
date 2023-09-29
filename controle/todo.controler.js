@@ -2,7 +2,13 @@ const Todo = require("../model/todo.model");
 
 const getAllTodo = async (req, res) => {
   const data = await Todo.find({});
-  res.status(200).send({ todos: data });
+  res
+    .cookie("hassenCookies", "{teststring:'hi there'}", {
+      maxAge: 900000,
+      httpOnly: true,
+    })
+    .status(200)
+    .send({ todos: data });
 };
 
 const postTodo = async (req, res) => {
