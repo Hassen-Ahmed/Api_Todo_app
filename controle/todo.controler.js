@@ -9,11 +9,11 @@ const getAllTodo = async (req, res) => {
       domain: "https://sticky-todos.netlify.app/todo",
     })
     .setHeader("Access-Control-Allow-Credentials", true)
+    .setHeader("Access-Control-Allow-Header", "X-Requested-with,content-type")
     .setHeader(
       "Access-Control-Allow-Origin",
-      "https://sticky-todos.netlify.app/todo"
+      "https://sticky-todos.netlify.app"
     )
-    .setHeader("Access-Control-Allow-Header", "X-Requested-with,content-type")
     .status(200)
     .send({ todos: data });
 };
