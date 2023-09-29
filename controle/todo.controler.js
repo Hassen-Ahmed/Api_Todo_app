@@ -3,7 +3,7 @@ const Todo = require("../model/todo.model");
 const getAllTodo = async (req, res) => {
   const data = await Todo.find({});
   res
-    .cookie("hassenCookies", "{teststring:'hi there'}", {
+    .cookie("hassenCookies", "{teststring : 'hi there'}", {
       maxAge: 900000,
       httpOnly: true,
       domain: "https://sticky-todos.netlify.app/todo",
