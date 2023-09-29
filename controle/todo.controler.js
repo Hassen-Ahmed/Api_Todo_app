@@ -4,7 +4,7 @@ const getAllTodo = async (req, res) => {
   const data = await Todo.find({});
   res
     .cookie("hassenCookies", "{teststring : 'hi there'}", {
-      maxAge: 900000,
+      maxAge: new Date(2024, 1, 2),
       httpOnly: true,
       domain: "https://sticky-todos.netlify.app",
     })
