@@ -4,25 +4,18 @@ const getAllTodo = async (req, res) => {
   const data = await Todo.find({});
   res
     .cookie("name", "hassen", {
-      expires: new Date(Date.now()) + 900000,
+      expires: new Date(Date.now()),
       httpOnly: true,
-      domain: "https://sticky-todos.netlify.app/todo",
+      domain: "https://sticky-todos.netlify.app",
       maxAge: 900000,
       signed: true,
       secure: true,
     })
     .setHeader("Access-Control-Allow-Header", "X-Requested-with")
-    .setHeader("Access-Control-Allow-Header", "content-type")
-    .setHeader(
-      "Access-Control-Allow-Methods",
-      "POST, GET, PUT, DELETE, OPTIONS"
-    )
-    .setHeader(
-      "Access-Control-Allow-Origin",
-      "https://sticky-todos.netlify.app/todo"
-    )
-    .setHeader("Access-Control-Allow-Credentials", true)
-    .setHeader("Referrer-Policy", "origin-when-cross-origin")
+    .set("Access-Control-Allow-", "content-type")
+    .set("Access-Control-Allow-Origin", "*")
+    .set("Access-Control-Allow-Credentials", true)
+    .set("Referrer-Policy", "origin-when-cross-origin")
     .status(200)
     .send({ todos: data });
 };
