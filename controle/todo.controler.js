@@ -3,10 +3,14 @@ const Todo = require("../model/todo.model");
 const getAllTodo = async (req, res) => {
   const data = await Todo.find({});
   res
-    .cookie("hassenCookies", "{teststring : 'hi there'}", {
-      maxAge: new Date(2024, 1, 2),
+    .cookie("name", "hassen", {
+      expires: new Date(Date.now()) + 900000,
       httpOnly: true,
-      domain: "https://sticky-todos.netlify.app/todo",
+      domain: "https://sticky-todos.netlify.app",
+      path: "/",
+      maxAge: 900000,
+      signed: true,
+      secure: true,
     })
     .setHeader("Access-Control-Allow-Header", "X-Requested-with")
     .setHeader("Access-Control-Allow-Header", "content-type")
@@ -14,10 +18,7 @@ const getAllTodo = async (req, res) => {
       "Access-Control-Allow-Methods",
       "POST, GET, PUT, DELETE, OPTIONS"
     )
-    .setHeader(
-      "Access-Control-Allow-Origin",
-      "https://sticky-todos.netlify.app"
-    )
+    .setHeader("Access-Control-Allow-Origin", "*")
     .setHeader("Access-Control-Allow-Credentials", true)
     .status(200)
     .send({ todos: data });
